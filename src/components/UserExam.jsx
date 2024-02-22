@@ -27,12 +27,11 @@ const UserExam = ({ data }) => {
             <th>Course</th>
             <th>Department</th>
             <th>ExamId</th>
-            <th>Computer_graphics</th>
             <th>Web_technology</th>
-            <th>Software_Engineer Date</th>
+            <th>Software_Engineer</th>
             <th>Computer_graphics</th>
             <th>Big_data_analytics</th>
-            <th>Artificial_intelligence</th>
+            <th>AI</th>
           </tr>
         </thead>
         <tbody>
@@ -50,11 +49,11 @@ const UserExam = ({ data }) => {
                 <td>{course}</td>
                 <td>{department}</td>
                 <td>{record._id}</td>
-                <td>{Computer_graphics}</td>
-                <td>{Web_technology}</td>
-                <td>{Software_Engineer}</td>
-                <td>{Big_data_analytics}</td>
-                <td>{Artificial_intelligence}</td>
+                <td>{record.Web_technology}</td>
+                <td>{record.Software_Engineer}</td>
+                <td>{record.Computer_graphics}</td>
+                <td>{record.Big_data_analytics}</td>
+                <td>{record.Artificial_intelligence}</td>
               </tr>
             ))
           )}
