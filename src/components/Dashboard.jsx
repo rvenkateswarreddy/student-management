@@ -15,6 +15,9 @@ import Welcomeuser from "./Welcomeuser";
 
 import axios from "axios";
 import Hostelpics from "../Dashboard components/Hostelpics";
+import UserAttendence from "./UserAttendence";
+import UserFees from "./UserFees";
+import UserExam from "./UserExam";
 const Dashboard = () => {
   const [data, setdata] = useState({});
   const [sidebarActive, setSidebarActive] = useState(false);
@@ -40,6 +43,9 @@ const Dashboard = () => {
           course: res.data.mydata.course,
           yearOfStudy: res.data.mydata.yearOfStudy,
           admissionNumber: res.data.mydata.admissionNumber,
+          attendance: res.data.mydata.attendance,
+          fees: res.data.mydata.fees,
+          exam: res.data.mydata.exam,
         })
       )
 
@@ -154,6 +160,33 @@ const Dashboard = () => {
             </Nav.Item>
             <Nav.Item>
               <NavLink
+                to="/dashboard/userattendance"
+                className="nav-link"
+                onClick={() => setSidebarActive(false)}
+              >
+                Myattendance
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink
+                to="/dashboard/userfees"
+                className="nav-link"
+                onClick={() => setSidebarActive(false)}
+              >
+                Myfees
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink
+                to="/dashboard/myexammarks"
+                className="nav-link"
+                onClick={() => setSidebarActive(false)}
+              >
+                Exam details
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink
                 to="/dashboard/messstatus"
                 className="nav-link"
                 onClick={() => setSidebarActive(false)}
@@ -193,6 +226,12 @@ const Dashboard = () => {
             <Route path="complaints" element={<Complaints />} />
             <Route path="billgenerator" element={<BillGenerator />} />
             <Route path="hostelpics" element={<Hostelpics />} />
+            <Route
+              path="userattendance"
+              element={<UserAttendence data={data} />}
+            />
+            <Route path="userfees" element={<UserFees data={data} />} />
+            <Route path="myexammarks" element={<UserExam data={data} />} />
             <Route path="messstatus" element={<MessStatus />} />
             <Route path="suggestions" element={<Suggestions />} />
           </Routes>
