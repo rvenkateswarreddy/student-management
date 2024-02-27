@@ -18,17 +18,17 @@ const UserAttendance = ({ data }) => {
 
   return (
     <div className="user-attendance-container">
-      <h2>User Information and Attendance</h2>
-      <table className="user-attendance-table">
+      <h2>My College Attendance</h2>
+      <table style={{ marginTop: 30 }} className="user-attendance-table">
         <thead>
           <tr>
-            <th>Email</th>
-            <th>Mobile</th>
             <th>Full Name</th>
+            <th>Mobile</th>
             <th>Permanent Address</th>
             <th>Course</th>
             <th>Department</th>
             <th>Date</th>
+            <th>Roll no</th>
             <th>Presence</th>
             <th>Attendance Id</th>
           </tr>
@@ -43,9 +43,8 @@ const UserAttendance = ({ data }) => {
           ) : (
             attendance.map((record, index) => (
               <tr key={index}>
-                <td>{email}</td>
-                <td>{mobile}</td>
                 <td>{fullname}</td>
+                <td>{mobile}</td>
                 <td>{permanentAddress}</td>
                 <td>{course}</td>
                 <td>{department}</td>
@@ -60,6 +59,7 @@ const UserAttendance = ({ data }) => {
                     second: "2-digit",
                   })}
                 </td>
+                <td>{attendance[0].rollno}</td>
                 <td>{record.isPresent ? "Present" : "Absent"}</td>
                 <td>{record._id}</td>
               </tr>

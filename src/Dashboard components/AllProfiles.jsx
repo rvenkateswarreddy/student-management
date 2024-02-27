@@ -182,7 +182,7 @@ const AllProfiles = () => {
   };
 
   return (
-    <div>
+    <div className="allprofilecontainer">
       <div className="search-bar">
         <label>
           Search by Full Name:

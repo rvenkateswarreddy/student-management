@@ -16,38 +16,26 @@ const UserFees = ({ data }) => {
     return <div>Loading...</div>;
   }
 
-  // State variable to keep track of cumulative fee due
-  const [cumulativeFeeDue, setCumulativeFeeDue] = useState(52000);
+  // Calculate the total amount paid
+  const totalAmountPaids = fees.reduce((acc, fee) => acc + fee.feeAmount, 0);
 
-  useEffect(() => {
-    // Calculate the cumulative fee due when fees change
-    let tempFeeDue = 52000;
-    fees.forEach((fee, index) => {
-      // Subtract fee amount from cumulative fee due
-      tempFeeDue -= fee.feeAmount;
-
-      // Adjust cumulative fee due for subsequent iterations
-      if (index !== 0) {
-        tempFeeDue += fees[index - 1].feeAmount;
-      }
-    });
-    setCumulativeFeeDue(tempFeeDue);
-  }, [fees]);
+  // Calculate the fee due
+  const feeDueAmount = 52000 - totalAmountPaids;
 
   return (
     <div className="user-attendance-container">
-      <h2>User Information and Fees</h2>
-      <table className="user-attendance-table">
+      <h2>My COLLEGE Fees</h2>
+      <table style={{ marginTop: 30 }} className="user-attendance-table">
         <thead>
           <tr>
-            <th>Email</th>
-            <th>Mobile</th>
             <th>Full Name</th>
+            <th>Mobile</th>
             <th>Permanent Address</th>
             <th>Course</th>
             <th>Department</th>
-            <th>Fee Amount</th>
-            <th>Fee Due</th>
+            <th>Total Fee</th>
+            <th>Fee Paid</th>
+
             <th>Payment Date</th>
             <th>Fees Id</th>
           </tr>
@@ -55,46 +43,46 @@ const UserFees = ({ data }) => {
         <tbody>
           {fees.length === 0 ? (
             <tr>
-              <td colSpan="9" style={{ color: "red" }}>
+              <td colSpan="10" style={{ color: "red" }}>
                 Fees details are not entered
               </td>
             </tr>
           ) : (
-            fees.map((record, index) => {
-              // Calculate the fee due for the current fee record
-              const feeDue =
-                index === 0
-                  ? cumulativeFeeDue
-                  : cumulativeFeeDue - record.feeAmount;
+            fees.map((record, index) => (
+              <tr key={index}>
+                <td>{fullname}</td>
+                <td>{mobile}</td>
+                <td>{permanentAddress}</td>
+                <td>{course}</td>
+                <td>{department}</td>
+                <td>52000 Rs</td>
+                <td>{record.feeAmount}Rs</td>
 
-              return (
-                <tr key={index}>
-                  <td>{email}</td>
-                  <td>{mobile}</td>
-                  <td>{fullname}</td>
-                  <td>{permanentAddress}</td>
-                  <td>{course}</td>
-                  <td>{department}</td>
-                  <td>{5200 - record.feeAmount}</td>
-                  <td>{feeDue}</td>
-                  <td>
-                    {new Date(record.paymentDate).toLocaleString("en-IN", {
-                      weekday: "long",
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                      second: "2-digit",
-                    })}
-                  </td>
-                  <td>{record._id}</td>
-                </tr>
-              );
-            })
+                <td>
+                  {new Date(record.paymentDate).toLocaleString("en-IN", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit",
+                  })}
+                </td>
+                <td>{record._id}</td>
+              </tr>
+            ))
           )}
         </tbody>
       </table>
+      <h4 style={{ marginTop: 30 }}>
+        <span style={{ color: "blue" }}>TOTAL AMOUNT PAID : </span>
+        {totalAmountPaids}Rs
+      </h4>
+      <h4>
+        <span style={{ color: "red" }}>TOTAL FEE DUE/AMOUNT TO PAY : </span>
+        {feeDueAmount}Rs
+      </h4>
     </div>
   );
 };

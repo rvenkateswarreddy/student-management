@@ -1,5 +1,5 @@
 import React from "react";
-import "./UserAttendance.css"; // Import the CSS file
+import "./UserExam.css";
 
 const UserExam = ({ data }) => {
   const {
@@ -17,48 +17,53 @@ const UserExam = ({ data }) => {
   }
 
   return (
-    <div className="user-attendance-container">
-      <h2>User Information and Exam</h2>
-      <table className="user-attendance-table">
-        <thead>
-          <tr>
-            <th>Full Name</th>
-
-            <th>Course</th>
-            <th>Department</th>
-            <th>ExamId</th>
-            <th>Web_technology</th>
-            <th>Software_Engineer</th>
-            <th>Computer_graphics</th>
-            <th>Big_data_analytics</th>
-            <th>AI</th>
-          </tr>
-        </thead>
-        <tbody>
-          {exam.length === 0 ? (
-            <tr>
-              <td colSpan="15" style={{ color: "red" }}>
-                Exam details are not entered
-              </td>
-            </tr>
-          ) : (
-            exam.map((record, index) => (
-              <tr key={index}>
-                <td>{fullname}</td>
-
-                <td>{course}</td>
-                <td>{department}</td>
-                <td>{record._id}</td>
-                <td>{record.Web_technology}</td>
-                <td>{record.Software_Engineer}</td>
-                <td>{record.Computer_graphics}</td>
-                <td>{record.Big_data_analytics}</td>
-                <td>{record.Artificial_intelligence}</td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+    <div className="card">
+      <div className="card-header bg-primary text-white">
+        User Information and Exam
+      </div>
+      <div className="card-body">
+        <h5 className="card-title">Full Name: {fullname}</h5>
+        <p className="card-text">
+          <strong>Email:</strong> {email}
+          <br />
+          <strong>Mobile:</strong> {mobile}
+          <br />
+          <strong>Permanent Address:</strong> {permanentAddress}
+          <br />
+          <strong>Course:</strong> {course}
+          <br />
+          <strong>Department:</strong> {department}
+        </p>
+        <div className="exam-details">
+          <h5 className="card-title">Exam Details</h5>
+          <ul className="list-unstyled">
+            <li>
+              <strong>Web Technology:</strong>{" "}
+              {exam.fixedSubjects.Web_technology}
+            </li>
+            <li>
+              <strong>Software Engineer:</strong>{" "}
+              {exam.fixedSubjects.Software_Engineer}
+            </li>
+            <li>
+              <strong>Computer Graphics:</strong>{" "}
+              {exam.fixedSubjects.Computer_graphics}
+            </li>
+            <li>
+              <strong>{exam.selectableSubjects.list1.type}:</strong>{" "}
+              {exam.selectableSubjects.list1.score}
+            </li>
+            <li>
+              <strong>{exam.selectableSubjects.list2.type}:</strong>{" "}
+              {exam.selectableSubjects.list2.score}
+            </li>
+            <li>
+              <strong>{exam.selectableSubjects.list3.type}:</strong>{" "}
+              {exam.selectableSubjects.list3.score}
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };

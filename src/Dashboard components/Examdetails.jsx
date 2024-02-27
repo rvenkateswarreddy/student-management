@@ -3,19 +3,20 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Examdetails.css";
+
 const Examdetails = () => {
   const [userId, setUserId] = useState("");
   const [marks, setMarks] = useState({
     Web_technology: "",
     Software_Engineer: "",
     Computer_graphics: "",
-    Big_data_analytics: "",
-    Artificial_intelligence: "",
+    list1: { type: "", score: "" },
+    list2: { type: "", score: "" },
+    list3: { type: "", score: "" },
   });
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
-    // Fetch user profile data when component mounts
     axios
       .get("https://student-management-qr9p.onrender.com/allprofiles", {
         headers: {
@@ -23,14 +24,12 @@ const Examdetails = () => {
         },
       })
       .then((response) => {
-        // Filter user list to display only users with usertype 'user'
         const filteredUsers = response.data.data.filter(
           (user) => user.usertype === "user"
         );
 
         setUserList(filteredUsers);
 
-        // Set the userId to the first user in the filtered list
         if (filteredUsers.length > 0) {
           setUserId(filteredUsers[0]._id);
         }
@@ -38,7 +37,7 @@ const Examdetails = () => {
       .catch((error) => {
         toast.error("Error fetching user profile:", error);
       });
-  }, []); // Empty dependency array to run effect only once when component mounts
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -46,13 +45,7 @@ const Examdetails = () => {
     try {
       const response = await axios.post(
         `https://student-management-qr9p.onrender.com/exam/${userId}`,
-        {
-          Web_technology: marks.Web_technology,
-          Software_Engineer: marks.Software_Engineer,
-          Computer_graphics: marks.Computer_graphics,
-          Big_data_analytics: marks.Big_data_analytics,
-          Artificial_intelligence: marks.Artificial_intelligence,
-        },
+        marks,
         {
           headers: {
             "Content-Type": "application/json",
@@ -62,14 +55,15 @@ const Examdetails = () => {
       );
 
       if (response.status === 200) {
-        toast.success("Exam marks added successfully");
+        alert("Exam marks added successfully");
         setMarks({
           Web_technology: "",
           Software_Engineer: "",
           Computer_graphics: "",
-          Big_data_analytics: "",
-          Artificial_intelligence: "",
-        }); // Clear input fields after successful submission
+          list1: { type: "", score: "" },
+          list2: { type: "", score: "" },
+          list3: { type: "", score: "" },
+        });
       } else {
         toast.error("Error adding exam marks");
       }
@@ -93,8 +87,12 @@ const Examdetails = () => {
             required
           >
             {userList.map((user) => (
-              <option key={user._id} value={user._id}>
-                {user.fullname} - {user.email}
+              <option
+                style={{ textTransform: "uppercase", marginTop: 20 }}
+                key={user._id}
+                value={user._id}
+              >
+                {user.fullname}
               </option>
             ))}
           </select>
@@ -104,6 +102,7 @@ const Examdetails = () => {
           <input
             type="number"
             id="Web_technology"
+            placeholder="Enter Marks"
             className="form-control"
             value={marks.Web_technology}
             onChange={(e) =>
@@ -117,6 +116,7 @@ const Examdetails = () => {
           <input
             type="number"
             id="Software_Engineer"
+            placeholder="Enter Marks"
             className="form-control"
             value={marks.Software_Engineer}
             onChange={(e) =>
@@ -130,6 +130,7 @@ const Examdetails = () => {
           <input
             type="number"
             id="Computer_graphics"
+            placeholder="Enter Marks"
             className="form-control"
             value={marks.Computer_graphics}
             onChange={(e) =>
@@ -139,35 +140,113 @@ const Examdetails = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="Big_data_analytics">Big Data Analytics:</label>
-          <input
-            type="number"
-            id="Big_data_analytics"
+          <label htmlFor="list1">Generic elective1</label>
+          <select
+            id="list1"
             className="form-control"
-            value={marks.Big_data_analytics}
+            value={marks.list1.type}
             onChange={(e) =>
-              setMarks({ ...marks, Big_data_analytics: e.target.value })
+              setMarks({
+                ...marks,
+                list1: { ...marks.list1, type: e.target.value },
+              })
             }
             required
+          >
+            <option value="">Select Subject</option>
+            <option value="Artificial_intelligence">
+              Artificial Intelligence
+            </option>
+            <option value="System_programming">System Programming</option>
+            <option value="Datamining_data_warehouse">
+              Datamining Data Warehouse
+            </option>
+          </select>
+          <input
+            type="number"
+            id="list1Marks"
+            className="form-control"
+            value={marks.list1.score}
+            onChange={(e) =>
+              setMarks({
+                ...marks,
+                list1: { ...marks.list1, score: e.target.value },
+              })
+            }
+            required
+            placeholder="Enter marks"
           />
         </div>
         <div className="form-group">
-          <label htmlFor="Artificial_intelligence">
-            Artificial Intelligence:
-          </label>
-          <input
-            type="number"
-            id="Artificial_intelligence"
+          <label htmlFor="list2">Generic Elective2</label>
+          <select
+            id="list2"
             className="form-control"
-            value={marks.Artificial_intelligence}
+            value={marks.list2.type}
             onChange={(e) =>
-              setMarks({ ...marks, Artificial_intelligence: e.target.value })
+              setMarks({
+                ...marks,
+                list2: { ...marks.list2, type: e.target.value },
+              })
             }
             required
+          >
+            <option value="">Select Subject</option>
+            <option value="Cryptography">Cryptography</option>
+            <option value="Big_data_analytics">Big Data Analytics</option>
+            <option value="Mobile_development">Mobile Development</option>
+          </select>
+          <input
+            type="number"
+            id="list2Marks"
+            className="form-control"
+            value={marks.list2.score}
+            onChange={(e) =>
+              setMarks({
+                ...marks,
+                list2: { ...marks.list2, score: e.target.value },
+              })
+            }
+            required
+            placeholder="Enter marks"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="list3">Open Elective</label>
+          <select
+            id="list3"
+            className="form-control"
+            value={marks.list3.type}
+            onChange={(e) =>
+              setMarks({
+                ...marks,
+                list3: { ...marks.list3, type: e.target.value },
+              })
+            }
+            required
+          >
+            <option value="">Select Subject</option>
+            <option value="English">English</option>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Political">Political</option>
+          </select>
+          <input
+            type="number"
+            id="list3Marks"
+            className="form-control"
+            value={marks.list3.score}
+            onChange={(e) =>
+              setMarks({
+                ...marks,
+                list3: { ...marks.list3, score: e.target.value },
+              })
+            }
+            required
+            placeholder="Enter marks"
           />
         </div>
         <button type="submit" className="btn btn-primary">
-          Submit
+          Add
         </button>
       </form>
       <ToastContainer />

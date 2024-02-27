@@ -65,6 +65,7 @@
 }
 .dashboard {
   cursor: pointer;
+  margin-left: 30px;
 }
 
 /* Add new styles for small screens */

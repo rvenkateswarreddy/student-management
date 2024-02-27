@@ -1,19 +1,18 @@
 /* myprofile.css */
 /* Neumorphic Card Styles */
-.neumorphic-card {
+.neumorphic-cardp {
   width: 500px;
-  margin: 20px auto;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
   background-color: #f5f5f5;
   text-align: center;
-  margin-top: 30px;
+  margin-bottom: 100px;
   padding: 16px;
 }
 
-.neumorphic-card:hover {
+.neumorphic-cardp:hover {
   transform: scale(1.05);
 }
 
@@ -22,7 +21,6 @@ div.heading {
   font-size: 40px;
   font-weight: 500;
   color: #0911e4; /* Set your desired color */
-  margin-bottom: 20px;
 }
 
 /* List Styles */
@@ -48,9 +46,13 @@ div.heading {
   font-weight: 600;
 }
 @media only screen and (max-width: 600px) {
-  .neumorphic-card {
+  .neumorphic-cardp {
     width: 300px;
     min-height: 550px;
-    margin-bottom: 30px;
+
+    transform: translateX(-200px);
+  }
+  .neumorphic-cardp:hover {
+    transform: none;
   }
 }

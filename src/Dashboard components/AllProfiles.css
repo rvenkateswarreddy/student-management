@@ -5,7 +5,11 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
-
+/* .allprofilecontainer {
+  max-height: 600px;
+  max-width: 2000px;
+  overflow-y: auto;
+} */
 /* Search Bar */
 .search-bar {
   display: flex;

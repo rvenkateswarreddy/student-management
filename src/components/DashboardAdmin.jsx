@@ -74,7 +74,7 @@ const DashboardAdmin = () => {
   };
 
   return (
-    <Container fluid className="dashboard-container">
+    <Container-fluid className="dashboard-container">
       {/* Navbar */}
       <Navbar
         bg="dark"
@@ -124,25 +124,6 @@ const DashboardAdmin = () => {
                 AllProfiles
               </NavLink>
             </Nav.Item>
-            <Nav.Item>
-              <NavLink
-                to="/admindashboard/admincomplaints"
-                className="nav-link"
-              >
-                StudentComplaints
-              </NavLink>
-            </Nav.Item>
-            <Nav.Item>
-              <NavLink to="/admindashboard/billgenerator" className="nav-link">
-                Bill Generator
-              </NavLink>
-            </Nav.Item>
-
-            <Nav.Item>
-              <NavLink to="/admindashboard/hostelpics" className="nav-link">
-                College gallery
-              </NavLink>
-            </Nav.Item>
 
             <Nav.Item>
               <NavLink to="/admindashboard/attendance" className="nav-link">
@@ -174,7 +155,25 @@ const DashboardAdmin = () => {
                 MarkList
               </NavLink>
             </Nav.Item>
+            <Nav.Item>
+              <NavLink
+                to="/admindashboard/admincomplaints"
+                className="nav-link"
+              >
+                StudentComplaints
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink to="/admindashboard/billgenerator" className="nav-link">
+                Bill Generator
+              </NavLink>
+            </Nav.Item>
 
+            <Nav.Item>
+              <NavLink to="/admindashboard/hostelpics" className="nav-link">
+                College gallery
+              </NavLink>
+            </Nav.Item>
             <Nav.Item>
               <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
             </Nav.Item>
@@ -208,7 +207,7 @@ const DashboardAdmin = () => {
           </Routes>
         </Col>
       </Row>
-    </Container>
+    </Container-fluid>
   );
 };
 

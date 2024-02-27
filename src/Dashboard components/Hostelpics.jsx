@@ -43,7 +43,7 @@ const Hostelpics = () => {
 
   return (
     <div className="image-carousel">
-      <h2>SV Hostel Images</h2>
+      <h2>SV COLLEGE OF COMMERCE,MANAGEMENT AND COMPUTER SCIENCE</h2>
       {imageRows.map((row, rowIndex) => (
         <div key={rowIndex} className="image-row">
           {row.map((imageUrl, imageIndex) => (

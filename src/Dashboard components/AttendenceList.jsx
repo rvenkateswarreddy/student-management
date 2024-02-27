@@ -45,12 +45,13 @@ const AttendanceList = () => {
           <thead>
             <tr>
               <th>User Type</th>
+              <th>Rollno</th>
               <th>Full Name</th>
               <th>Email</th>
               <th>Mobile</th>
               <th>Date</th>
+
               <th>Is Present</th>
-              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -58,14 +59,25 @@ const AttendanceList = () => {
               user.attendance.map((entry, index) => (
                 <tr key={`${user._id}-${index}`}>
                   <td>{user.usertype}</td>
+                  <td>{entry.rollno}</td>
                   <td>{user.fullname}</td>
                   <td>{user.email}</td>
                   <td>{user.mobile}</td>
-                  <td>{entry.date}</td>
+                  <td>
+                    {new Date(entry.date).toLocaleString("en-IN", {
+                      weekday: "long",
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      second: "2-digit",
+                    })}
+                  </td>
+
                   <td className="red_attendence">
                     {entry.isPresent ? "Yes" : "No"}
                   </td>
-                  <td>{/* Action buttons can be placed here */}</td>
                 </tr>
               ))
             )}
@@ -78,6 +90,7 @@ const AttendanceList = () => {
   return (
     <div>
       <input
+        style={{ marginTop: "20px" }}
         type="text"
         placeholder="Search by name"
         value={searchTerm}

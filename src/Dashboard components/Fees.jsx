@@ -29,14 +29,13 @@ const Fees = () => {
 
   const renderTable = (userData, title) => (
     <div id="allprofiletablecontainer" className="tablewholecontainer">
-      <h2 style={{ marginTop: "10px" }}>{title}</h2>
+      <h2 style={{ marginTop: "10px" }}>ALL FEES LIST</h2>
       <div className="table-container">
         <table className="neumorphic-table">
           <thead>
             <tr>
-              <th>User Type</th>
               <th>Full Name</th>
-              <th>Email</th>
+
               <th>Mobile</th>
 
               <th>Course</th>
@@ -52,9 +51,8 @@ const Fees = () => {
           <tbody>
             {userData.map((user) => (
               <tr key={user._id}>
-                <td>{user.usertype}</td>
-                <td>{user.fullname}</td>
-                <td>{user.email}</td>
+                <td style={{ textTransform: "uppercase" }}>{user.fullname}</td>
+
                 <td>{user.mobile}</td>
 
                 <td>{user.course || "N/A"}</td>

@@ -63,8 +63,12 @@ const FeesGenerate = () => {
             required
           >
             {userList.map((user) => (
-              <option key={user._id} value={user._id}>
-                {user.fullname} - {user.email}
+              <option
+                style={{ textTransform: "uppercase" }}
+                key={user._id}
+                value={user._id}
+              >
+                {user.fullname}
               </option>
             ))}
           </select>

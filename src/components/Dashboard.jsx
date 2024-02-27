@@ -18,6 +18,7 @@ import Hostelpics from "../Dashboard components/Hostelpics";
 import UserAttendence from "./UserAttendence";
 import UserFees from "./UserFees";
 import UserExam from "./UserExam";
+import TImeTable from "./TimeTable";
 const Dashboard = () => {
   const [data, setdata] = useState({});
   const [sidebarActive, setSidebarActive] = useState(false);
@@ -62,7 +63,7 @@ const Dashboard = () => {
   };
 
   return (
-    <Container fluid className="dashboard-container">
+    <Container-fluid className="dashboard-container">
       {/* Navbar */}
       <Navbar
         bg="dark"
@@ -196,11 +197,11 @@ const Dashboard = () => {
             </Nav.Item>
             <Nav.Item>
               <NavLink
-                to="/dashboard/suggestions"
+                to="/dashboard/timetable"
                 className="nav-link"
                 onClick={() => setSidebarActive(false)}
               >
-                Suggestions
+                Time Table
               </NavLink>
             </Nav.Item>
             <Nav.Item>
@@ -233,11 +234,11 @@ const Dashboard = () => {
             <Route path="userfees" element={<UserFees data={data} />} />
             <Route path="myexammarks" element={<UserExam data={data} />} />
             <Route path="messstatus" element={<MessStatus />} />
-            <Route path="suggestions" element={<Suggestions />} />
+            <Route path="timetable" element={<TImeTable />} />
           </Routes>
         </Col>
       </Row>
-    </Container>
+    </Container-fluid>
   );
 };
 

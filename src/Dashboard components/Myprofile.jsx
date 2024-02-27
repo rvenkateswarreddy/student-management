@@ -22,7 +22,7 @@ const Myprofile = ({ data }) => {
     <Container className="text-center">
       <div className="heading">My Profile</div>
 
-      <Card className="neumorphic-card">
+      <Card style={{ marginTop: -5 }} className="neumorphic-cardp">
         <Card.Body>
           <Card.Title
             className={`font-weight-bold fullname ${

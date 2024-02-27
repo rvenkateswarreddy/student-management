@@ -7,6 +7,7 @@ import "./Attendence.css";
 const Attendence = () => {
   const [userId, setUserId] = useState("");
   const [date, setDate] = useState("");
+  const [rollno, setrollno] = useState("");
   const [isPresent, setIsPresent] = useState(true);
   const [userList, setUserList] = useState([]);
 
@@ -51,6 +52,7 @@ const Attendence = () => {
           body: JSON.stringify({
             userId,
             date,
+            rollno,
             isPresent,
           }),
         }
@@ -97,6 +99,17 @@ const Attendence = () => {
             className="form-control"
             value={date}
             onChange={(e) => setDate(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="rollno">Rollno</label>
+          <input
+            id="rollno"
+            type="rollno"
+            className="form-control"
+            value={rollno}
+            onChange={(e) => setrollno(e.target.value)}
             required
           />
         </div>
