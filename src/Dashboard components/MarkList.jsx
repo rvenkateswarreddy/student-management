@@ -44,7 +44,7 @@ const MarkList = () => {
 
   const calculatePercentage = (exam) => {
     const totalMarks = calculateTotalMarks(exam);
-    return ((totalMarks / 350) * 100).toFixed(2); // Assuming total marks is 350
+    return ((totalMarks / 600) * 100).toFixed(2); // Assuming total marks is 350
   };
 
   const filteredUsers = userData.filter((user) =>
