@@ -16,6 +16,19 @@ const UserExam = ({ data }) => {
     return <div>Loading...</div>;
   }
 
+  // Calculate total marks
+  const totalMarks =
+    exam.fixedSubjects.Web_technology +
+    exam.fixedSubjects.Software_Engineer +
+    exam.fixedSubjects.Computer_graphics +
+    exam.selectableSubjects.list1.score +
+    exam.selectableSubjects.list2.score +
+    exam.selectableSubjects.list3.score;
+
+  // Calculate percentage
+  const maxMarks = 600;
+  const percentage = (totalMarks / maxMarks) * 100;
+
   return (
     <div className="card">
       <div className="card-header bg-primary text-white">
@@ -24,11 +37,7 @@ const UserExam = ({ data }) => {
       <div className="card-body">
         <h5 className="card-title">Full Name: {fullname}</h5>
         <p className="card-text">
-          <strong>Email:</strong> {email}
-          <br />
           <strong>Mobile:</strong> {mobile}
-          <br />
-          <strong>Permanent Address:</strong> {permanentAddress}
           <br />
           <strong>Course:</strong> {course}
           <br />
@@ -60,6 +69,12 @@ const UserExam = ({ data }) => {
             <li>
               <strong>{exam.selectableSubjects.list3.type}:</strong>{" "}
               {exam.selectableSubjects.list3.score}
+            </li>
+            <li>
+              <strong>Total Marks:</strong> {totalMarks}
+            </li>
+            <li>
+              <strong>Percentage:</strong> {percentage.toFixed(2)}%
             </li>
           </ul>
         </div>
