@@ -12,8 +12,19 @@ const UserExam = ({ data }) => {
     exam,
   } = data;
 
+  // If exam details are not loaded yet
   if (!exam) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <h1 style={{ color: "red" }}>Loading...</h1>
+        <h1 style={{ color: "red" }}>your exams details are not entered</h1>
+      </div>
+    );
+  }
+
+  // If exam details are empty
+  if (Object.keys(exam).length === 0) {
+    return <h1>Your exam details are not entered</h1>;
   }
 
   // Calculate total marks

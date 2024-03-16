@@ -2,25 +2,28 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import "./Home.css"; // Import the CSS file
+import "./Home.css";
 
 const Home = () => {
   const notify = () => {
-    alert("please login to access");
+    alert("Please login to access.");
     toast.success("Stay booked successfully!");
   };
 
   return (
     <>
       <ToastContainer />
-
       <div className="hero-section">
-        <h1>STUDENT MANAGEMENT</h1>
-        <p>Welcome to SVU ,BEST PLACE TO UPSKILL YOUR KNOWLEDGE</p>
+        <h1>
+          <span>Sri</span> <span>Venkateswara</span> <span>University</span>{" "}
+          <span>student</span>
+        </h1>
+        <p className="homingwelcome">
+          Welcome to SVU student management, keep Upskilling here.
+        </p>
         <Link to="/login">
           <button className="book-button" onClick={notify}>
-            LEARN HERE
+            Learn Here
           </button>
         </Link>
       </div>

@@ -24,6 +24,7 @@ import AdminSuggestions from "./Dashboard components/AdminSuggestions";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Feeslist from "./Dashboard components/Feeslist";
+import Eachservice from "./components/Eachservice";
 
 const App = () => {
   return (
@@ -33,6 +34,8 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/:userId" element={<Eachservice />} />
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Signup />} />
         </Route>
@@ -50,7 +53,7 @@ const App = () => {
           <Route path="billgenerator" element={<BillGenerator />} />
           <Route path="billmanage" element={<Billmanage />} />
           <Route path="managerooms" element={<Managerooms />} />
-          <Route path="feeslist" element={<Feeslist />} />y
+          <Route path="feeslist" element={<Feeslist />} />
           <Route path="messstatus" element={<MessStatus />} />
           <Route path="adminsuggestions" element={<AdminSuggestions />} />
         </Route>

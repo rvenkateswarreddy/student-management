@@ -8,7 +8,7 @@ const TImeTable = () => {
       <table className="custom-table0">
         <thead>
           <tr>
-            <th>Date & Day</th>
+            <th>Day</th>
             <th>Course Code</th>
             <th>QPCODE</th>
             <th>Paper</th>
@@ -17,46 +17,54 @@ const TImeTable = () => {
         </thead>
         <tbody>
           <tr>
-            <td>04-03-2024 Monday</td>
+            <td>Monday</td>
             <td>MCA-301</td>
             <td>12-00-3-01R</td>
             <td>301:Software Engineering</td>
             <td>CORE</td>
           </tr>
           <tr>
-            <td>05-03-2024 Tuesday</td>
+            <td> Tuesday</td>
             <td>MCA-302</td>
             <td>12-00-3-02R</td>
             <td>302:Computer Graphics</td>
             <td>CORE</td>
           </tr>
           <tr>
-            <td>06-03-2024 Wednesday</td>
+            <td>Wednesday</td>
             <td>MCA-303</td>
             <td>12-00-3-03R</td>
             <td>303:Web Technologies</td>
             <td>GENERIC ELECTIVE</td>
           </tr>
           <tr>
-            <td>07-03-2024 Thursday</td>
+            <td>Thursday</td>
             <td>MCA-304</td>
             <td>12-00-3-06R</td>
-            <td>304:System Programming</td>
+            <td>
+              304:a.Data Warehousing & Data mining
+              <td>304:b.Big Data Analytics</td>
+              304:c.System Programming
+            </td>
             <td>GENERIC ELECTIVE</td>
           </tr>
           <tr>
-            <td>11-03-2024 Friday</td>
+            <td>Friday</td>
             <td>MCA-305</td>
             <td>12-00-3-09R</td>
-            <td>305:Mobile Application Development</td>
-            <td>OPEN ELECTIVE</td>
+            <td>
+              305:a.Crytography & Network security
+              <td>305:b.Artificial Intelligence</td>
+              305:c.Mobile Application Development
+            </td>
+            <td>Generic Elective</td>
           </tr>
           <tr>
-            <td>12-03-2024 Saturday</td>
-            <td>MCA-306</td>
+            <td>Saturday</td>
+            <td>MCA-306 </td>
             <td>4-75-316</td>
-            <td>316:Digital Marketing</td>
-            <td>GENERIC ELECTIVE</td>
+            <td>316:Open Electives</td>
+            <td>Open Elective</td>
           </tr>
         </tbody>
       </table>

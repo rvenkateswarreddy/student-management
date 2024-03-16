@@ -132,33 +132,7 @@ const Dashboard = () => {
                 Mess Bill
               </NavLink>
             </Nav.Item> */}
-            <Nav.Item>
-              <NavLink
-                to="/dashboard/complaints"
-                className="nav-link"
-                onClick={() => setSidebarActive(false)}
-              >
-                Complaints
-              </NavLink>
-            </Nav.Item>
-            <Nav.Item>
-              <NavLink
-                to="/dashboard/billgenerator"
-                className="nav-link"
-                onClick={() => setSidebarActive(false)}
-              >
-                Bill Generator
-              </NavLink>
-            </Nav.Item>
-            <Nav.Item>
-              <NavLink
-                to="/dashboard/hostelpics"
-                className="nav-link"
-                onClick={() => setSidebarActive(false)}
-              >
-                COLLEGE GALLERY
-              </NavLink>
-            </Nav.Item>
+
             <Nav.Item>
               <NavLink
                 to="/dashboard/userattendance"
@@ -186,6 +160,16 @@ const Dashboard = () => {
                 Exam details
               </NavLink>
             </Nav.Item>
+
+            <Nav.Item>
+              <NavLink
+                to="/dashboard/timetable"
+                className="nav-link"
+                onClick={() => setSidebarActive(false)}
+              >
+                Time Table
+              </NavLink>
+            </Nav.Item>
             <Nav.Item>
               <NavLink
                 to="/dashboard/messstatus"
@@ -197,11 +181,29 @@ const Dashboard = () => {
             </Nav.Item>
             <Nav.Item>
               <NavLink
-                to="/dashboard/timetable"
+                to="/dashboard/complaints"
                 className="nav-link"
                 onClick={() => setSidebarActive(false)}
               >
-                Time Table
+                Complaints
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink
+                to="/dashboard/billgenerator"
+                className="nav-link"
+                onClick={() => setSidebarActive(false)}
+              >
+                Bill Generator
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
+              <NavLink
+                to="/dashboard/hostelpics"
+                className="nav-link"
+                onClick={() => setSidebarActive(false)}
+              >
+                COLLEGE GALLERY
               </NavLink>
             </Nav.Item>
             <Nav.Item>

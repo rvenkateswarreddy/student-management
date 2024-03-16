@@ -1,7 +1,7 @@
 .table-container0 {
   width: 100%;
   overflow-x: auto;
-  margin-top: 80px;
+
   margin-left: 50px;
 }
 
@@ -14,7 +14,7 @@
 .custom-table0 td {
   padding: 8px 16px;
   text-align: left;
-  font-size: large;
+  font-size: 15px;
   color: white;
   padding: 15px;
   border-bottom: 1px solid #100f0f;
