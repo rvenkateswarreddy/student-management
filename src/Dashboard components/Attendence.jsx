@@ -86,7 +86,7 @@ const Attendence = () => {
           >
             {userList.map((user) => (
               <option key={user._id} value={user._id}>
-                {user.fullname} - {user.email}
+                {user.fullname}
               </option>
             ))}
           </select>

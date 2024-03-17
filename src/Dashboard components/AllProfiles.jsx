@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./AllProfiles.css";
+import { useNavigate } from "react-router-dom";
+
 import axios from "axios";
+import { Link, redirect } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useParams } from "react-router-dom";
 const AllProfiles = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [data, setData] = useState([]);
@@ -11,7 +15,10 @@ const AllProfiles = () => {
   const [editModalValues, setEditModalValues] = useState({});
   const [isModalFloating, setIsModalFloating] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const type = useParams();
+  const history = useNavigate();
 
+  console.log(type);
   useEffect(() => {
     axios
       .get("https://student-management-qr9p.onrender.com/allprofiles", {
@@ -20,23 +27,26 @@ const AllProfiles = () => {
         },
       })
       .then((res) => {
-        setData(res.data.data);
+        const maindata = res.data.data;
+        console.log(maindata);
+        const maindatafilter = maindata.filter(
+          (user) => user.usertype === type.username
+        );
+        setData(maindatafilter);
         setIsLoading(false); // Set loading to false after data is fetched
       })
       .catch((er) => console.log(er));
-  }, []);
+  }, [type]);
   const filteredUsers = data.filter((user) =>
     user.fullname.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const renderTable = (userData, title) => (
     <div id="allprofiletablecontainer" className="tablewholecontainer">
-      <h2 style={{ marginTop: "10px" }}>{title}</h2>
       <div className="table-container ">
         <table className="neumorphic-table">
           <thead>
             <tr>
-              <th>User Type</th>
               <th>Full Name</th>
               <th>Email</th>
               <th>Mobile</th>
@@ -47,14 +57,13 @@ const AllProfiles = () => {
               <th>hostelblock</th>
               <th>roomno</th>
               <th>Year of Study</th>
-              <th>Admission Number</th>
+              <th>Hallticket Number</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {userData.map((user) => (
               <tr key={user._id}>
-                <td>{user.usertype}</td>
                 <td>{user.fullname}</td>
                 <td>{user.email}</td>
                 <td>{user.mobile}</td>
@@ -193,6 +202,13 @@ const AllProfiles = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </label>
+        <h3>
+          <h3>
+            <button onClick={() => history("/admindashboard/callprofiles")}>
+              Back to profile dashboard
+            </button>
+          </h3>
+        </h3>
       </div>
       {isLoading ? ( // Render loading indicator if isLoading is true
         <div className="redloading">Loading...</div>
@@ -310,7 +326,7 @@ const AllProfiles = () => {
                 />
               </label>
               <label>
-                Admission Number:
+                Hallticket Number:
                 <input
                   type="text"
                   name="admissionNumber"

@@ -252,7 +252,7 @@ const Signup = () => {
               </Form.Group>
 
               <Form.Group controlId="admissionNumber" className="form-group">
-                <Form.Label className="label">Admission Number:</Form.Label>
+                <Form.Label className="label">Hallticket No.</Form.Label>
                 <Form.Control
                   type="text"
                   name="admissionNumber"
@@ -269,7 +269,7 @@ const Signup = () => {
             type="submit"
             className="submit-button neumorphic-button mt-2"
           >
-            {textAdmin ? "processing" : "SIGNUP"}
+            {textAdmin ? "processing..." : "SIGNUP"}
           </Button>
         </Form>
         <p className="text-center ">

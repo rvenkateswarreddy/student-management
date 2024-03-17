@@ -170,7 +170,7 @@ const Login = () => {
             type="submit"
             className="submit-button mt-2 neumorphic-button"
           >
-            {textUser ? "processing" : "LOGIN"}
+            {textUser ? "processing..." : "LOGIN"}
           </Button>
         </Form>
       </div>

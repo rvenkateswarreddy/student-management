@@ -25,6 +25,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Feeslist from "./Dashboard components/Feeslist";
 import Eachservice from "./components/Eachservice";
+import Bothprofile from "./Dashboard components/Bothprofile";
 
 const App = () => {
   return (
@@ -48,7 +49,8 @@ const App = () => {
             </Protect>
           }
         >
-          <Route path="allprofiles" element={<AllProfiles />} />
+          <Route path="allprofiles" element={<Bothprofile />} />
+          <Route path="allprofiles/:username" element={<AllProfiles />} />
           <Route path="admincomplaints" element={<AdminComplaints />} />
           <Route path="billgenerator" element={<BillGenerator />} />
           <Route path="billmanage" element={<Billmanage />} />

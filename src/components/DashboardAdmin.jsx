@@ -22,6 +22,8 @@ import "./Dashboard.css";
 import axios from "axios";
 import FeesGenerate from "../Dashboard components/FeesGenerate";
 import MarkList from "../Dashboard components/MarkList";
+import StudentDetails from "../Dashboard components/StudentDetails";
+import Bothprofile from "../Dashboard components/Bothprofile";
 
 const DashboardAdmin = () => {
   const [data, setdata] = useState([]);
@@ -46,14 +48,10 @@ const DashboardAdmin = () => {
           "x-token": localStorage.getItem("token"),
         },
       })
-      .then((res) =>
-        setdata1({
-          usertype: res.data.mydata.usertype,
-          email: res.data.mydata.email,
-          mobile: res.data.mydata.mobile,
-          fullname: res.data.mydata.fullname,
-        })
-      )
+      .then((res) => {
+        setdata1(res.data);
+      })
+
       .catch((er) => console.log(er));
   }, []); // Empty dependency array to run the effect only once on mount
   // console.log(data1);
@@ -126,6 +124,11 @@ const DashboardAdmin = () => {
             </Nav.Item>
 
             <Nav.Item>
+              <NavLink to="/admindashboard/studentdetails" className="nav-link">
+                StudentDetails
+              </NavLink>
+            </Nav.Item>
+            <Nav.Item>
               <NavLink to="/admindashboard/attendance" className="nav-link">
                 Attendance
               </NavLink>
@@ -193,10 +196,15 @@ const DashboardAdmin = () => {
                 />
               }
             />
-            <Route path="allprofiles" element={<AllProfiles data={data} />} />
+            <Route path="allprofiles" element={<Bothprofile />} />
+            <Route
+              path="allprofiles/:username"
+              element={<AllProfiles data={data} />}
+            />
             <Route path="admincomplaints" element={<AdminComplaints />} />
             <Route path="billgenerator" element={<BillGenerator />} />
             <Route path="hostelpics" element={<Hostelpics />} />
+            <Route path="studentdetails" element={<StudentDetails />} />
 
             <Route path="attendance" element={<Attendence />} />
             <Route path="attendancelist" element={<AttendenceList />} />

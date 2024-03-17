@@ -56,7 +56,7 @@ const Myprofile = ({ data }) => {
               <strong>Year of Study:</strong> {yearOfStudy}
             </ListGroup.Item>
             <ListGroup.Item>
-              <strong>Admission Number:</strong> {admissionNumber}
+              <strong>HallTicket Number:</strong> {admissionNumber}
             </ListGroup.Item>
           </ListGroup>
         </Card.Body>
