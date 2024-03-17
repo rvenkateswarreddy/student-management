@@ -204,7 +204,7 @@ const AllProfiles = () => {
         </label>
         <h3>
           <h3>
-            <button onClick={() => history("/admindashboard/callprofiles")}>
+            <button onClick={() => history("/admindashboard/allprofiles")}>
               Back to profile dashboard
             </button>
           </h3>
