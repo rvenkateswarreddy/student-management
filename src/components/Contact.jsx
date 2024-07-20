@@ -19,11 +19,24 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can add logic here to handle form submission, e.g., send an email
-    console.log("Form submitted:", formData);
 
-    // Display a success toast notification
-    toast.success("Form submitted successfully!");
+    emailjs
+      .sendForm(
+        "service_v8r8oom",
+        "template_8o86q5g",
+        form.current,
+        "GLqnWv9lQro_m3sHo"
+      )
+      .then(
+        (result) => {
+          console.log("SUCCESS!", result.text);
+          toast.success("Email sent successfully!"); // Display success toast
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+          toast.error("Failed to send email."); // Display error toast
+        }
+      );
   };
 
   return (
